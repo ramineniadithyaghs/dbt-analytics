@@ -1,0 +1,34 @@
+version: 2
+
+sources:
+  - name: sales_raw
+    database: SALES_DB
+    schema: SALES_SCHEMA
+    tables:
+      - name: CUSTOMERS_RAW_TABLE
+      - name: ORDERS_RAW_TABLE
+      - name: ORDER_ITEMS_RAW_TABLE
+      - name: PRODUCTS_RAW_TABLE
+
+
+models:
+  - name: stg_customers
+    description: "Staging model for customers loaded from CUSTOMERS_RAW_TABLE."
+    columns:
+      - name: customer_id
+        tests:
+          - not_null
+      - name: customer_unique_id
+        tests:
+          - not_null
+
+  - name: stg_orders
+    description: "Staging model for sales orders loaded from ORDERS_RAW_TABLE."
+    columns:
+      - name: order_id
+        tests:
+          - not_null
+          - unique
+      - name: customer_id
+        tests:
+          - not_null
