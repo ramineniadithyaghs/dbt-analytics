@@ -1,0 +1,15 @@
+version: 2
+
+models:
+  - name: fact_order_items
+    description: "Fact table at the order-item grain, with price and freight per item."
+    columns:
+      - name: order_id
+        tests:
+          - not_null
+      - name: order_item_id
+        tests:
+          - not_null
+      - name: item_total_value
+        tests:
+          - not_null

@@ -1,0 +1,14 @@
+version: 2
+
+models:
+  - name: stg_products
+    description: "Staging model for cleaned product data."
+    columns:
+      - name: product_id
+        description: "Primary key for product."
+        tests:
+          - not_null
+          - unique
+
+      - name: product_category_name
+        description: "Category of the product. NULLs are allowed because Olist dataset has missing mappings."
